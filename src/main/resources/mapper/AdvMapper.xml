@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mangowork.shop.dao.AdvDao">
+
+    <sql id="BASE_TABLE">
+        adv
+    </sql>
+
+
+
+    <!-- 用户表 -->
+    <sql id="TABLE_USER">
+        <include refid="cn.mangowork.shop.dao.UserDao.BASE_TABLE"/>
+    </sql>
+
+    <!-- 附件的基本列 -->
+    <sql id="BASE_COLUMN">
+        aa.id, aa.fname, aa.ftype, aa.fkey, aa.authorId, aa.created,
+    </sql>
+
+    <!-- 关联查询的用户表需要的字段 -->
+    <sql id="REL_USER_COLUMN">
+        u.username,
+    </sql>
+
+
+    <!-- 新增单个附件 -->
+    <insert id="addAttAch" parameterType="cn.mangowork.shop.model.AttAchDomain">
+        INSERT INTO
+        <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            fname, ftype, fkey, authorId, created,
+        </trim>
+        <trim  prefix="VALUES(" suffix=")" suffixOverrides=",">
+            #{fname, jdbcType=VARCHAR}, #{ftype, jdbcType=VARCHAR}, #{fkey, jdbcType=VARCHAR}, #{authorId,jdbcType=INTEGER}, UNIX_TIMESTAMP(NOW()),
+        </trim>
+    </insert>
+
+
+    <insert id="addAdv" parameterType="cn.mangowork.shop.model.AdvDomain">
+        INSERT INTO
+        <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            fname, ftype, fkey, authorId, created,
+        </trim>
+    </insert>
+
+
+</mapper>
