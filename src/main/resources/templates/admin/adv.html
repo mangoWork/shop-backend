@@ -38,10 +38,10 @@
                                 <td >{{adv.endDate}}</td>
                                 <td >{{adv.sort}}</td>
                                 <td>
-                                    <a href="javascript:void(0)" onclick="editLink(this);"
+                                    <a href="javascript:void(0)" @onclick="editAdv(adv.id);"
                                        class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
                                             class="fa fa-edit"></i> <span>编辑</span></a>
-                                    <a href="javascript:void(0)" th:onclick="'delLink();'"
+                                    <a href="javascript:void(0)" @click="deleteAdv(adv.id);"
                                        class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i
                                             class="fa fa-trash-o"></i> <span>删除</span></a>
                                 </td>
@@ -68,7 +68,8 @@
                                             <div class="form-group">
                                                 <label for="advName" class="col-sm-3 control-label">广告名称</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="advName" name="advName" placeholder="请输入广告名称" required>
+                                                    <input type="text" class="form-control" id="advName" name="advName"
+                                                           v-model="advDomain.advName" placeholder="请输入广告名称" required>
                                                 </div>
                                             </div>
 
@@ -76,7 +77,7 @@
                                                 <label for="advLink" class="col-sm-3 control-label">广告链接</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" name="advLink" value="" id="advLink"
-                                                           placeholder="广告链接" required>
+                                                           placeholder="广告链接" required  v-model="advDomain.advLink">
                                                 </div>
                                             </div>
 
@@ -95,6 +96,7 @@
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control" name="advImg" value="" id="advImg"
                                                            placeholder="上传图片" required accept="image/gif, image/jpeg, image/png">
+                                                    <input type="text" v-model="advDomain.imgPath" style="display: none">
                                                 </div>
                                             </div>
 
@@ -112,16 +114,16 @@
                                             <div class="form-group">
                                                 <label class="form-group-title col-sm-3 control-label">日期范围</label>
                                                 <div class="input-group date col-sm-9">
-                                                    <input name="startDate" class="form-control date-picker form-control-left">
+                                                    <input name="startDate" v-model="advDomain.startDate" class="form-control date-picker form-control-left">
                                                     <span class="input-group-addon"></span>
-                                                    <input name="endDate" class="form-control date-picker form-control-right">
+                                                    <input name="endDate" v-model="advDomain.endDate" class="form-control date-picker form-control-right">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="sort" class="col-sm-3 control-label">排序</label>
                                                 <div class="col-sm-9">
-                                                    <input type="number" min="0" class="form-control" name="sort"  id="sort" placeholder="排序" required>
+                                                    <input type="number" min="0" class="form-control" v-model="advDomain.sort" name="sort"  id="sort" placeholder="排序" required>
                                                 </div>
                                             </div>
                                         </form>
@@ -171,21 +173,6 @@
 
     }
 
-    function editLink(obj) {
-        var this_ = $(obj);
-
-        var mid = this_.parents('tr').attr('mid');
-        var title = this_.parents('tr').find('td:eq(0)').text();
-        var url = this_.parents('tr').find('td:eq(1)').text();
-        var logo = this_.parents('tr').find('td:eq(2)').text();
-        var sort = this_.parents('tr').find('td:eq(3)').text();
-
-        $('#linkForm #mid').val(mid);
-        $('#linkForm #title').val(title);
-        $('#linkForm #url').val(url);
-        $('#linkForm #logo').val(logo);
-        $('#linkForm #sort').val(sort);
-    }
 
     function delLink(mid) {
         tale.alertConfirm({
@@ -212,7 +199,8 @@
         el: '#app',
         data: {
             message: 'Hello Vue.js!',
-            advList: []
+            advList: [],
+            advDomain: {}
         },
         mounted:function () {
             //类似于jquery中的ready方法
@@ -226,6 +214,17 @@
                     console.log(res);
                     _this.advList = res.body;//body是vue封装的一层
                     console.log(_this);
+                });
+            },
+            deleteAdv: function (id) {
+                var _this = this;
+                tale.alertConfirm({
+                    title: '确定删除该数据吗?',
+                    then: function () {
+                        _this.$http.post("/admin/shop/adv/delete", {id: id}).then(function (res) {
+                            _this.advDomain = res.body;
+                        })
+                    }
                 });
             }
         }

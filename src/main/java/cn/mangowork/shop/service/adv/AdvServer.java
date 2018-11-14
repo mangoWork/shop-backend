@@ -1,6 +1,7 @@
 package cn.mangowork.shop.service.adv;
 
 import cn.mangowork.shop.model.AdvDomain;
+import cn.mangowork.shop.service.BaseServer;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @create 2018-11-13 20:03
  **/
 
-public interface AdvServer {
+public interface AdvServer extends BaseServer{
 
     /**
      * 图片的保存

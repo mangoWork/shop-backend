@@ -43,4 +43,9 @@ public class AdvServerImpl implements AdvServer {
     public List<AdvDomain> queryAdvs() {
         return advDao.query();
     }
+
+    @Override
+    public void deleteById(int id) {
+        advDao.deleteById(id);
+    }
 }

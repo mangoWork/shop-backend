@@ -54,11 +54,16 @@
     <!--查询广告-->
     
     <select id="query" resultType="cn.mangowork.shop.model.AdvDomain">
-        select * from adv;
+        select * from adv where status=0;
     </select>
 
     <update id="updateAdv" parameterType="cn.mangowork.shop.model.AdvDomain" useGeneratedKeys="true" keyProperty="id">
 
+    </update>
+
+    <!--删除数据，不做物理删除-->
+    <update id="delete" parameterType="cn.mangowork.shop.model.AdvDomain" >
+        update adv set  staus=#{status,jdbcType=INTEGER}  where  id=#{id,jdbcType=INTEGER} and version=#{version,jdbcType=INTEGER}
     </update>
 
 </mapper>

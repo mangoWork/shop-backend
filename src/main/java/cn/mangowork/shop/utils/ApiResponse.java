@@ -1,5 +1,7 @@
 package cn.mangowork.shop.utils;
 
+import cn.mangowork.shop.constant.enums.HttpStatus;
+
 /**
  * 返回的参数封装类
  * Created by Donghua.Chen on 2018/4/20.
@@ -11,6 +13,7 @@ public class ApiResponse <T> {
     private static final String CODE_FAIL = "fail";
 
     private String code;
+    private int statusCode;
     private T data;
     private String msg;
 
@@ -32,8 +35,13 @@ public class ApiResponse <T> {
         this.msg = msg;
     }
 
+    public ApiResponse(Integer code, String msg){
+        this.statusCode = code;
+        this.msg = msg;
+    }
+
     public static ApiResponse success(){
-        return new ApiResponse(CODE_SUCCESS);
+        return new ApiResponse(HttpStatus.getStatus(HttpStatus.SUCCESS), HttpStatus.getDesc(HttpStatus.SUCCESS));
     }
 
     public static ApiResponse success(Object data){
@@ -70,5 +78,13 @@ public class ApiResponse <T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 }

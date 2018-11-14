@@ -1,5 +1,7 @@
 package cn.mangowork.shop.model;
 
+import cn.mangowork.shop.constant.StatusEnum;
+
 import java.util.Date;
 
 /**
@@ -33,6 +35,12 @@ public class BaseDomain {
      */
     private int userId;
 
+    /**
+     * 状态
+     * -1 删除
+     */
+    private int status;
+
     public int getId() {
         return id;
     }
@@ -63,5 +71,13 @@ public class BaseDomain {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

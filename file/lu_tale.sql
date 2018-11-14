@@ -171,3 +171,24 @@ INSERT INTO `t_users` VALUES ('1', 'admin', 'a66abb5684c45962d887564f08346e8d', 
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+DROP TABLE IF EXISTS `adv`;
+CREATE TABLE `adv` (
+  `id` int(64) NOT NULL AUTO_INCREMENT,
+  `advLink` varchar(255) DEFAULT NULL,
+  `advName` varchar(100) NOT NULL COMMENT '广告名称',
+  `jump` tinyint(4) NOT NULL,
+  `imgPath` varchar(255) NOT NULL,
+  `startDate` datetime DEFAULT NULL,
+  `endDate` datetime DEFAULT NULL,
+  `adapter` varchar(30) NOT NULL,
+  `sort` int(255) DEFAULT '0',
+  `userId` int(10) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `update` datetime DEFAULT NULL,
+  `version` int(11) DEFAULT '0',
+  `status` int(255) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;

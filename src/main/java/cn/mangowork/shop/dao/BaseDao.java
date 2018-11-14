@@ -30,4 +30,10 @@ public interface BaseDao<T> {
      * @return
      */
     List<T>  query();
+
+    /**
+     * 通过id删除数据
+     * @param id
+     */
+    void deleteById(int id);
 }

@@ -1,6 +1,7 @@
 package cn.mangowork.shop.controller.admin;
 
 import cn.mangowork.shop.constant.Types;
+import cn.mangowork.shop.constant.enums.HttpStatus;
 import cn.mangowork.shop.controller.BaseController;
 import cn.mangowork.shop.dto.cond.MetaCond;
 import cn.mangowork.shop.model.AdvDomain;
@@ -9,6 +10,7 @@ import cn.mangowork.shop.model.UserDomain;
 import cn.mangowork.shop.service.adv.AdvServer;
 import cn.mangowork.shop.service.log.LogService;
 import cn.mangowork.shop.service.user.UserService;
+import cn.mangowork.shop.utils.ApiResponse;
 import cn.mangowork.shop.utils.ImgUtils;
 import cn.mangowork.shop.utils.TaleUtils;
 import io.swagger.annotations.Api;
@@ -82,6 +84,17 @@ public class AdvController extends BaseController{
     @ResponseBody
     public List<AdvDomain> getAdvs(){
         return advService.queryAdvs();
+    }
+
+    /**
+     * 获取广告信息
+     * @return
+     */
+    @RequestMapping("adv/delete")
+    @ResponseBody
+    public ApiResponse getAdvs(int id){
+        advService.deleteById(id);
+        return ApiResponse.success();
     }
 
 }
