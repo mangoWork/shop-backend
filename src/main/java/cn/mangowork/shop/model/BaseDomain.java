@@ -1,5 +1,7 @@
 package cn.mangowork.shop.model;
 
+import java.util.Date;
+
 /**
  * @author dailiming
  * @version v1
@@ -13,53 +15,53 @@ public class BaseDomain {
     /**
      * 创建id
      */
-    private String id;
+    private int id;
 
 
     /**
      * 创建时间
      */
-    private String created;
+    private Date created;
 
     /**
      * 更新时间
      */
-    private String update;
+    private Date update;
 
     /**
      * 创建用户
      */
-    private String userId;
+    private int userId;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
-    public String getUpdate() {
+    public Date getUpdate() {
         return update;
     }
 
-    public void setUpdate(String update) {
+    public void setUpdate(Date update) {
         this.update = update;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 }

@@ -2,6 +2,8 @@ package cn.mangowork.shop.service.adv;
 
 import cn.mangowork.shop.model.AdvDomain;
 
+import java.util.List;
+
 /**
  * @author dailiming
  * @version v1
@@ -19,4 +21,5 @@ public interface AdvServer {
      */
     boolean saveAdv(String path, AdvDomain advDomain);
 
+    List<AdvDomain> queryAdvs();
 }

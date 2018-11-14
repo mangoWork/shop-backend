@@ -1,5 +1,11 @@
 package cn.mangowork.shop.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
 /**
  * @author dailiming
  * @version v1
@@ -20,6 +26,11 @@ public class AdvDomain extends BaseDomain{
     private boolean jump;
 
     /**
+     * 图片链接
+     */
+    private String advLink;
+
+    /**
      * 图片路径
      */
     private String imgPath;
@@ -32,12 +43,12 @@ public class AdvDomain extends BaseDomain{
     /**
      * 开始时间
      */
-    private String startDate;
+    private Date startDate;
 
     /**
      * 结束时间
      */
-    private String endDate;
+    private Date endDate;
 
     /**
      * 排序
@@ -76,19 +87,19 @@ public class AdvDomain extends BaseDomain{
         this.adapter = adapter;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -98,5 +109,13 @@ public class AdvDomain extends BaseDomain{
 
     public void setSort(int sort) {
         this.sort = sort;
+    }
+
+    public String getAdvLink() {
+        return advLink;
+    }
+
+    public void setAdvLink(String advLink) {
+        this.advLink = advLink;
     }
 }

@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="title='广告管理',active='adv'">
 <header th:replace="admin/header::headerFragment(${title},${active})"></header>
 <body class="fixed-left">
-<div id="wrapper">
+<div id="wrapper" >
     <div th:replace="admin/header::header-body"></div>
-    <div class="content-page">
+    <div class="content-page" id="app">
         <div class="content">
             <div class="container">
                 <div class="row">
@@ -19,7 +19,6 @@
                                 <th>广告名称</th>
                                 <th>广告链接</th>
                                 <th>是否跳转</th>
-                                <th>图片地址</th>
                                 <th>图片预览</th>
                                 <th>适用设备</th>
                                 <th>起始日期</th>
@@ -29,24 +28,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <th:block th:each="adv : ${links}">
-                                <tr th:attr="mid=${adv.mid}">
-                                    <td th:text="${adv.advName}"></td>
-                                    <td th:text="${adv.advLink}"></td>
-                                    <td th:text="${adv.jump == '1'? '是': '否'}"></td>
-                                    <td><a th:href="@{${adv.slug}}" target="_blank" th:text="${link.slug}"></a></td>
-                                    <td th:text="${adv.description}"></td>
-                                    <td th:text="${adv.sort}"></td>
-                                    <td>
-                                        <a href="javascript:void(0)" onclick="editLink(this);"
-                                           class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
-                                                class="fa fa-edit"></i> <span>编辑</span></a>
-                                        <a href="javascript:void(0)" th:onclick="'delLink('+${link.mid}+');'"
-                                           class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i
-                                                class="fa fa-trash-o"></i> <span>删除</span></a>
-                                    </td>
-                                </tr>
-                            </th:block>
+                            <tr v-for="adv in advList">
+                                <td >{{adv.advName}}</td>
+                                <td >{{adv.advLink}}</td>
+                                <td >{{adv.jump == 1 ? '跳转': '不跳转'}}</td>
+                                <td ><img :src="adv.imgPath" style="width: 40px; height: 20px;"></td>
+                                <td >{{adv.adapter}}</td>
+                                <td >{{adv.startDate}}</td>
+                                <td >{{adv.endDate}}</td>
+                                <td >{{adv.sort}}</td>
+                                <td>
+                                    <a href="javascript:void(0)" onclick="editLink(this);"
+                                       class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
+                                            class="fa fa-edit"></i> <span>编辑</span></a>
+                                    <a href="javascript:void(0)" th:onclick="'delLink();'"
+                                       class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i
+                                            class="fa fa-trash-o"></i> <span>删除</span></a>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -146,6 +145,9 @@
     </div>
 </div>
 <div th:replace="admin/footer :: footer"></div>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+
 <script src="//cdn.bootcss.com/jquery-validate/1.15.1/jquery.validate.min.js"></script>
 <script src="//cdn.bootcss.com/jquery-validate/1.15.1/localization/messages_zh.min.js"></script>
 <script type="text/javascript">
@@ -204,6 +206,30 @@
         });
     }
     /*]]>*/
+</script>
+<script th:inline="javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!',
+            advList: []
+        },
+        mounted:function () {
+            //类似于jquery中的ready方法
+            this.getAdvList();
+        },
+        methods:{
+            getAdvList: function () {
+                var _this=this;
+                console.log(this);
+                this.$http.get("/admin/shop/adv/list").then(function (res) {
+                    console.log(res);
+                    _this.advList = res.body;//body是vue封装的一层
+                    console.log(_this);
+                });
+            }
+        }
+    })
 </script>
 </body>
 </html>

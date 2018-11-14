@@ -332,70 +332,9 @@ public class DateKit {
         return new Date();
     }
 
-    public static String dateFormatRss(Date date) {
-        return date != null?dateFormat(date, "E, d MMM yyyy H:mm:ss") + " GMT":"";
-    }
 
-    public static boolean betweenStartDateAndEndDate(Date startDate, Date endDate) {
-        boolean bool = false;
-        Date curDate = new Date();
-        if(curDate.after(startDate) && curDate.before(dateAdd(1, endDate, 1))) {
-            bool = true;
-        }
 
-        return bool;
-    }
 
-    public static boolean nowDateBetweenStartDateAndEndDate(Date startDate, Date endDate) {
-        boolean bool = false;
-        Date curDate = new Date();
-        if(curDate.after(startDate) && curDate.before(endDate)) {
-            bool = true;
-        }
-
-        return bool;
-    }
-
-    public static boolean nowDateAfterDate(Date date) {
-        boolean bool = false;
-        Date curDate = new Date();
-        if(curDate.after(date)) {
-            bool = true;
-        }
-
-        return bool;
-    }
-
-    public static int getBetweenTodaysStartDateAndEndDate(Date startDate, Date endDate) {
-        byte betweentoday = 0;
-        if(startDate == null) {
-            return betweentoday;
-        } else {
-            if(endDate == null) {
-                Calendar calendar = Calendar.getInstance();
-                String year = Integer.toString(calendar.get(Calendar.YEAR));
-                String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
-                String day = Integer.toString(calendar.get(Calendar.DATE));
-                String strtodaytime = year + "-" + month + "-" + day;
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-                try {
-                    endDate = formatter.parse(strtodaytime);
-                } catch (ParseException var10) {
-                    var10.printStackTrace();
-                }
-            }
-
-            int betweentoday1;
-            if(endDate.after(startDate)) {
-                betweentoday1 = (int)((endDate.getTime() - startDate.getTime()) / 86400000L);
-            } else {
-                betweentoday1 = (int)((startDate.getTime() - endDate.getTime()) / 86400000L);
-            }
-
-            return betweentoday1;
-        }
-    }
 
     public static String getTime(int format) {
         StringBuffer cTime = new StringBuffer(10);
@@ -501,95 +440,7 @@ public class DateKit {
         return date.getTime() / 1000L;
     }
 
-    public static Date getNextDay(Date date) {
-        long time = date.getTime() / 1000L + 86400L;
-        date.setTime(time * 1000L);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-        try {
-            date = format.parse(format.format(date));
-        } catch (Exception var5) {
-            System.out.println(var5.getMessage());
-        }
-
-        return date;
-    }
-
-    public static Date nextDay(Date date) {
-        Date newDate = (Date)date.clone();
-        long time = newDate.getTime() / 1000L + 86400L;
-        newDate.setTime(time * 1000L);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-        try {
-            newDate = format.parse(format.format(newDate));
-        } catch (Exception var6) {
-            System.out.println(var6.getMessage());
-        }
-
-        return newDate;
-    }
-
-    public static Date getNowTime() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        String dateStr = dateFormat(date);
-
-        try {
-            date = format.parse(dateStr);
-        } catch (ParseException var4) {
-            var4.printStackTrace();
-        }
-
-        return date;
-    }
-
-    public static Date getTomorrow(Date date1) {
-        Calendar now = Calendar.getInstance();
-        now.setTime(date1);
-        now.add(5, 1);
-        return now.getTime();
-    }
-
-    public static Date getWeekAgo(Date date) {
-        Date newDate = (Date)date.clone();
-        long time = newDate.getTime() / 1000L - 604800L;
-        newDate.setTime(time * 1000L);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-        try {
-            newDate = format.parse(format.format(newDate));
-        } catch (Exception var6) {
-            System.out.println(var6.getMessage());
-        }
-
-        return newDate;
-    }
-
-    public static Date getDatebyTime(Date date, int n) {
-        String str = dateFormat(date, "yyyy-MM-dd");
-        String[] strs = StringUtils.split(str, "-");
-        int month = Integer.parseInt(strs[1]);
-        int monthnow = (month + n) % 12;
-        int year = Integer.parseInt(strs[0]) + (month + n) / 12;
-        str = year + "-" + monthnow + "-" + strs[2];
-        return dateFormat(str, "yyyy-MM-dd");
-    }
-
-    public static Date yesterday(Date date) {
-        Date newDate = (Date)date.clone();
-        long time = newDate.getTime() / 1000L - 86400L;
-        newDate.setTime(time * 1000L);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-        try {
-            newDate = format.parse(format.format(newDate));
-        } catch (Exception var6) {
-            System.out.println(var6.getMessage());
-        }
-
-        return newDate;
-    }
 
     public static Date getYesterday(Date date) {
         long time = date.getTime() / 1000L - 86400L;
@@ -692,6 +543,10 @@ public class DateKit {
         return cale.getTime();
     }
 
+
+    public static void main(String[] args){
+        System.out.println(new Date());
+    }
 
 
 }

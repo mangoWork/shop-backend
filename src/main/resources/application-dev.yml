@@ -68,9 +68,8 @@ logging:
 swagger:
   show: true
 
-
 shop:
   adv:
     img:
-      storagePath: storage/img/
+      storagePath: /storage/img/
       format: png,jpeg

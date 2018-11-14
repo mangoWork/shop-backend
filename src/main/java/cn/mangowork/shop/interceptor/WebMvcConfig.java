@@ -2,6 +2,9 @@ package cn.mangowork.shop.interceptor;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -20,6 +23,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(baseInterceptor);
+    }
+
+    @Value("${shop.adv.img.storagePath}")
+    private String storagePath;
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        if(!registry.hasMappingForPattern(storagePath + "**")){
+            registry.addResourceHandler(storagePath + "**").addResourceLocations("classpath:" + storagePath);
+        }
     }
 
 }

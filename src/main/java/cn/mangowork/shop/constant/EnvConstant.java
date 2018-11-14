@@ -1,4 +1,4 @@
-package cn.mangowork.shop.utils;
+package cn.mangowork.shop.constant;
 
 /**
  * @author dailiming
@@ -11,5 +11,11 @@ public class EnvConstant {
 
     /**class文件对应的路径*/
     public static final String BASE_PATH = EnvConstant.class.getResource("/").getPath();
+
+    /**时间格式date*/
+    public static final String DATE_FORMAT = "yyyy-mm-dd";
+
+    /**datetime日期格式*/
+    public static final String DATETIME_FORMAT = "yyyy-mm-dd hh:mm:ss";
 
 }
