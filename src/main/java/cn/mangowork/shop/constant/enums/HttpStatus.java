@@ -11,10 +11,10 @@ package cn.mangowork.shop.constant.enums;
 public enum  HttpStatus {
 
     SUCCESS,
-    SUCCESS_DESC(200,  "成功", SUCCESS, "success"),
+    SUCCESS_DESC(200,  "数据获取成功", SUCCESS, "success"),
 
     FAIL,
-    FAIL_DESC(500,  "失败", FAIL, "fail"),
+    FAIL_DESC(500,  "数据获取失败", FAIL, "fail"),
 
     NOT_FOUND,
     NOT_FOUND_DESC(404,  "未找到", FAIL, "notFound");

@@ -31,7 +31,7 @@ public class Swagger2 {
                 .enable(swaggerShow)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.mangowork.shop.controller"))
+                .apis(RequestHandlerSelectors.basePackage("cn.mangowork.shop.backend.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

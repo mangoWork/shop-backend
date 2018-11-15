@@ -1,7 +1,7 @@
 package cn.mangowork.shop.utils;
 
 
-import cn.mangowork.shop.model.MetaDomain;
+import cn.mangowork.shop.backend.model.MetaDomain;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 

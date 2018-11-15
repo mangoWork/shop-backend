@@ -1,7 +1,7 @@
 package cn.mangowork.shop.utils;
 
 import cn.mangowork.shop.constant.WebConst;
-import cn.mangowork.shop.model.ContentDomain;
+import cn.mangowork.shop.backend.model.ContentDomain;
 import com.github.pagehelper.PageInfo;
 import com.vdurmont.emoji.EmojiParser;
 import org.apache.commons.lang3.StringUtils;

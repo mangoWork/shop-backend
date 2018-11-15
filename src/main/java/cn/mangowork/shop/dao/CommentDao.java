@@ -1,7 +1,7 @@
 package cn.mangowork.shop.dao;
 
-import cn.mangowork.shop.dto.cond.CommentCond;
-import cn.mangowork.shop.model.CommentDomain;
+import cn.mangowork.shop.backend.dto.cond.CommentCond;
+import cn.mangowork.shop.backend.model.CommentDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

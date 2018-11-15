@@ -1,11 +1,8 @@
 package cn.mangowork.shop.dao;
 
-import cn.mangowork.shop.dto.cond.UserCond;
-import cn.mangowork.shop.model.UserDomain;
+import cn.mangowork.shop.backend.model.UserDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * Created by Donghua.Chen on 2018/4/20.

@@ -2,13 +2,11 @@ package cn.mangowork.shop.interceptor;
 
 import cn.mangowork.shop.constant.Types;
 import cn.mangowork.shop.constant.WebConst;
-import cn.mangowork.shop.model.OptionsDomain;
-import cn.mangowork.shop.model.UserDomain;
-import cn.mangowork.shop.service.option.OptionService;
-import cn.mangowork.shop.service.user.UserService;
+import cn.mangowork.shop.backend.model.OptionsDomain;
+import cn.mangowork.shop.backend.model.UserDomain;
+import cn.mangowork.shop.backend.service.option.OptionService;
+import cn.mangowork.shop.backend.service.user.UserService;
 import cn.mangowork.shop.utils.*;
-import cn.mangowork.shop.service.option.OptionService;
-import cn.mangowork.shop.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

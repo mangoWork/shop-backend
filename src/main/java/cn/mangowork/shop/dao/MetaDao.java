@@ -1,8 +1,8 @@
 package cn.mangowork.shop.dao;
 
-import cn.mangowork.shop.dto.MetaDto;
-import cn.mangowork.shop.dto.cond.MetaCond;
-import cn.mangowork.shop.model.MetaDomain;
+import cn.mangowork.shop.backend.dto.MetaDto;
+import cn.mangowork.shop.backend.dto.cond.MetaCond;
+import cn.mangowork.shop.backend.model.MetaDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

@@ -23,7 +23,7 @@
 
 
     <!-- 新增单个附件 -->
-    <insert id="addAttAch" parameterType="cn.mangowork.shop.model.AttAchDomain">
+    <insert id="addAttAch" parameterType="cn.mangowork.shop.backend.model.AttAchDomain">
         INSERT INTO
         <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -60,7 +60,7 @@
     </delete>
 
     <!-- 更新附件信息 -->
-    <update id="updateAttAch" parameterType="cn.mangowork.shop.model.AttAchDomain">
+    <update id="updateAttAch" parameterType="cn.mangowork.shop.backend.model.AttAchDomain">
         UPDATE
         <include refid="BASE_TABLE"/>
         <set>
@@ -78,7 +78,7 @@
     </update>
 
     <!-- 根据主键获取附件信息 -->
-    <select id="getAttAchById" resultType="cn.mangowork.shop.dto.AttAchDto">
+    <select id="getAttAchById" resultType="cn.mangowork.shop.backend.dto.AttAchDto">
         SELECT
         <trim suffix="" suffixOverrides=",">
             <include refid="BASE_COLUMN"/>
@@ -92,7 +92,7 @@
     </select>
 
     <!-- 查找所有的附件 -->
-    <select id="getAtts" resultType="cn.mangowork.shop.dto.AttAchDto">
+    <select id="getAtts" resultType="cn.mangowork.shop.backend.dto.AttAchDto">
         SELECT
         <trim suffix="" suffixOverrides=",">
             <include refid="BASE_COLUMN"/>

@@ -25,7 +25,7 @@
 
 
     <!-- 新增单个附件 -->
-    <insert id="addAttAch" parameterType="cn.mangowork.shop.model.AttAchDomain">
+    <insert id="addAttAch" parameterType="cn.mangowork.shop.backend.model.AttAchDomain">
         INSERT INTO
         <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -38,7 +38,7 @@
 
 
     <!--保存广告-->
-    <insert id="addAdv" parameterType="cn.mangowork.shop.model.AdvDomain" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addAdv" parameterType="cn.mangowork.shop.backend.model.AdvDomain" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO adv
         <trim prefix="(" suffix=")" suffixOverrides=",">
             advName, advLink, jump, imgPath, startDate, endDate, adapter, sort, userId, created
@@ -52,17 +52,16 @@
     </insert>
 
     <!--查询广告-->
-    
-    <select id="query" resultType="cn.mangowork.shop.model.AdvDomain">
-        select * from adv where status=0;
+    <select id="query" parameterType="cn.mangowork.shop.backend.model.AdvDomain" resultType="cn.mangowork.shop.backend.model.AdvDomain">
+        select * from adv where status=#{status, jdbcType=INTEGER}
     </select>
 
-    <update id="updateAdv" parameterType="cn.mangowork.shop.model.AdvDomain" useGeneratedKeys="true" keyProperty="id">
+    <update id="updateAdv" parameterType="cn.mangowork.shop.backend.model.AdvDomain" useGeneratedKeys="true" keyProperty="id">
 
     </update>
 
     <!--删除数据，不做物理删除-->
-    <update id="deleteById" parameterType="cn.mangowork.shop.model.AdvDomain" >
+    <update id="deleteById" parameterType="cn.mangowork.shop.backend.model.AdvDomain" >
         update adv set  status=#{status,jdbcType=INTEGER}, version=version +1   where  id=#{id,jdbcType=INTEGER} and version=#{version,jdbcType=INTEGER}
     </update>
 

@@ -1,7 +1,7 @@
 package cn.mangowork.shop.utils;
 
 import cn.mangowork.shop.constant.EnvConstant;
-import cn.mangowork.shop.controller.admin.AdvController;
+import cn.mangowork.shop.backend.controller.admin.AdvController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -20,8 +20,6 @@ import java.io.*;
 public class ImgUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(AdvController.class);
-
-
 
     /**
      * 保存图片

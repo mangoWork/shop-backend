@@ -145,6 +145,12 @@
 			<version>0.8.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -171,6 +177,15 @@
 				</configuration>
 			</plugin>
 			<!-- Docker maven plugin -->
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!--fork:设置True，否则可能devtools不会起作用-->
+					<fork>true</fork>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

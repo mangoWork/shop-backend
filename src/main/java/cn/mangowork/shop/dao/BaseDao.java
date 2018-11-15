@@ -1,6 +1,6 @@
 package cn.mangowork.shop.dao;
 
-import cn.mangowork.shop.model.AdvDomain;
+import cn.mangowork.shop.backend.model.AdvDomain;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public interface BaseDao<T> {
      * 数据
      * @return
      */
-    List<T>  query();
+    List<T>  query(T t);
 
     /**
      * 通过id删除数据

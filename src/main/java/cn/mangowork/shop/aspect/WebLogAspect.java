@@ -1,6 +1,6 @@
 package cn.mangowork.shop.aspect;
 
-import cn.mangowork.shop.service.log.LogService;
+import cn.mangowork.shop.backend.service.log.LogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -32,7 +32,7 @@ public class WebLogAspect {
 
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
-    @Pointcut("execution(public * cn.mangowork.shop.controller..*.*(..))")
+    @Pointcut("execution(public * cn.mangowork.shop.backend.controller..*.*(..))")
     public void webLog(){}
 
 

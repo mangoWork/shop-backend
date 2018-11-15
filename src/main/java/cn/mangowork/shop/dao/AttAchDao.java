@@ -1,7 +1,7 @@
 package cn.mangowork.shop.dao;
 
-import cn.mangowork.shop.dto.AttAchDto;
-import cn.mangowork.shop.model.AttAchDomain;
+import cn.mangowork.shop.backend.dto.AttAchDto;
+import cn.mangowork.shop.backend.model.AttAchDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

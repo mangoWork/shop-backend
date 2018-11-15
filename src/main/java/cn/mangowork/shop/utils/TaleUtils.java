@@ -2,7 +2,7 @@ package cn.mangowork.shop.utils;
 
 import cn.mangowork.shop.constant.WebConst;
 import cn.mangowork.shop.exception.BusinessException;
-import cn.mangowork.shop.model.UserDomain;
+import cn.mangowork.shop.backend.model.UserDomain;
 import org.apache.commons.lang3.StringUtils;
 import org.commonmark.Extension;
 import org.commonmark.ext.gfm.tables.TablesExtension;
@@ -25,7 +25,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.Normalizer;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

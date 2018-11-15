@@ -12,7 +12,10 @@ public class ApiResponse <T> {
 
     private static final String CODE_FAIL = "fail";
 
+    private int status;
+
     private String code;
+
     private T data;
     private String msg;
 
@@ -24,9 +27,26 @@ public class ApiResponse <T> {
         this.code = code;
     }
 
+    private ApiResponse(HttpStatus httpStatus){
+        this.status = HttpStatus.getStatus(httpStatus);
+        this.msg = HttpStatus.getDesc(httpStatus);
+    }
+
     public ApiResponse(String code, T data){
         this.code = code;
         this.data = data;
+    }
+
+    private ApiResponse(HttpStatus httpStatus, T data){
+        this.status = HttpStatus.getStatus(httpStatus);
+        this.code = HttpStatus.getCode(httpStatus);
+        if (data instanceof String){
+            this.msg = (String) data;
+        }else {
+            this.data = data;
+            this.msg = HttpStatus.getDesc(httpStatus);
+        }
+
     }
 
     public ApiResponse(String code, String msg){
@@ -34,20 +54,46 @@ public class ApiResponse <T> {
         this.msg = msg;
     }
 
+    private ApiResponse(HttpStatus httpStatus, String msg){
+        this.code = HttpStatus.getCode(httpStatus);
+        this.status = HttpStatus.getStatus(httpStatus);
+        this.msg = msg;
+    }
+
+    @Deprecated
     public static ApiResponse success(){
         return new ApiResponse(HttpStatus.getCode(HttpStatus.SUCCESS));
     }
 
+    public static ApiResponse widthSuccess(){
+        return new ApiResponse(HttpStatus.SUCCESS);
+    }
+
+    @Deprecated
     public static ApiResponse success(Object data){
         return new ApiResponse(CODE_SUCCESS, data);
     }
 
+    public static ApiResponse widthSuccess(Object data){
+        return new ApiResponse(HttpStatus.SUCCESS, data);
+    }
+
+    @Deprecated
     public static ApiResponse fail(String msg){
         return new ApiResponse(CODE_FAIL, msg);
     }
 
+    public static ApiResponse widthFail(String msg){
+        return new ApiResponse(HttpStatus.FAIL, msg);
+    }
+
+    @Deprecated
     public static ApiResponse widthCode(String errorCode) {
         return new ApiResponse(errorCode);
+    }
+
+    public static ApiResponse widthStatus(HttpStatus httpStatus) {
+        return new ApiResponse(httpStatus);
     }
 
     public String getMsg() {
@@ -72,5 +118,13 @@ public class ApiResponse <T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

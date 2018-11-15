@@ -1,8 +1,8 @@
 package cn.mangowork.shop.dao;
 
-import cn.mangowork.shop.dto.ArchiveDto;
-import cn.mangowork.shop.dto.cond.ContentCond;
-import cn.mangowork.shop.model.ContentDomain;
+import cn.mangowork.shop.backend.dto.ArchiveDto;
+import cn.mangowork.shop.backend.dto.cond.ContentCond;
+import cn.mangowork.shop.backend.model.ContentDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

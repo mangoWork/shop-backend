@@ -1,6 +1,6 @@
 package cn.mangowork.shop.dao;
 
-import cn.mangowork.shop.model.AdvDomain;
+import cn.mangowork.shop.backend.model.AdvDomain;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
