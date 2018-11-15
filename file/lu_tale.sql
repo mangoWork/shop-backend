@@ -192,3 +192,22 @@ CREATE TABLE `adv` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for setting
+-- ----------------------------
+DROP TABLE IF EXISTS `setting`;
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` enum('wx-programmer','pc','wx-public','site') NOT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `status` int(10) DEFAULT '0',
+  `version` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `update` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`,`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
