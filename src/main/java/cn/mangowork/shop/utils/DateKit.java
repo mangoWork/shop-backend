@@ -1,7 +1,12 @@
 package cn.mangowork.shop.utils;
 
+import cn.mangowork.shop.constant.EnvConstant;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -543,9 +548,19 @@ public class DateKit {
         return cale.getTime();
     }
 
+    public static Date convertDate(Date date, String format){
+        DateFormat dFormat = new SimpleDateFormat(format);
+        DateTime parse = DateTime.parse(dFormat.format(date));
+        return parse.toDate();
+    }
 
     public static void main(String[] args){
         System.out.println(new Date());
+        DateFormat dFormat = new SimpleDateFormat(EnvConstant.DATETIME_FORMAT);
+        DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern(EnvConstant.DATETIME_FORMAT);
+        DateTime parse = DateTime.parse("2018-09-15 13:09:31",dateTimeFormat );
+        Date d = parse.toDate();
+        System.out.println(parse.toDate());
     }
 
 

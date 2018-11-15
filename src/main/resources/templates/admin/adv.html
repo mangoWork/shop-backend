@@ -28,7 +28,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="adv in advList">
+                            <tr v-for="(adv, index) in advList">
                                 <td >{{adv.advName}}</td>
                                 <td >{{adv.advLink}}</td>
                                 <td >{{adv.jump == 1 ? '跳转': '不跳转'}}</td>
@@ -41,7 +41,7 @@
                                     <a href="javascript:void(0)" @onclick="editAdv(adv.id);"
                                        class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
                                             class="fa fa-edit"></i> <span>编辑</span></a>
-                                    <a href="javascript:void(0)" @click="deleteAdv(adv.id);"
+                                    <a href="javascript:void(0)" @click="deleteAdv(adv.id, adv.version, index);"
                                        class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i
                                             class="fa fa-trash-o"></i> <span>删除</span></a>
                                 </td>
@@ -147,8 +147,7 @@
     </div>
 </div>
 <div th:replace="admin/footer :: footer"></div>
-<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
-<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+
 
 <script src="//cdn.bootcss.com/jquery-validate/1.15.1/jquery.validate.min.js"></script>
 <script src="//cdn.bootcss.com/jquery-validate/1.15.1/localization/messages_zh.min.js"></script>
@@ -213,19 +212,36 @@
                 this.$http.get("/admin/shop/adv/list").then(function (res) {
                     console.log(res);
                     _this.advList = res.body;//body是vue封装的一层
+                    _this.convertDate(_this.advList);
                     console.log(_this);
                 });
             },
-            deleteAdv: function (id) {
+            deleteAdv: function (id, version, index) {
                 var _this = this;
                 tale.alertConfirm({
                     title: '确定删除该数据吗?',
                     then: function () {
-                        _this.$http.post("/admin/shop/adv/delete", {id: id}).then(function (res) {
-                            _this.advDomain = res.body;
+                        _this.$http.post("/admin/shop/adv/delete", JSON.stringify({id: id, version: version})).then(function (res) {
+                            console.log(res.body)
+                            if (res.body.code == "success"){
+                                _this.advList.splice(index,1);
+                                tale.alertOkAndReload("操作成功");
+                            }else{
+                                tale.alertError(res.body.msg || "删除失败");
+                            }
                         })
                     }
                 });
+            },
+            convertDate: function (advList) {
+                for (var i=0; i< advList.length; i++){
+                    var startDate = advList[i].startDate;
+                    var endDate = advList[i].endDate;
+                    startDate = (startDate == null || undefined) ? "": startDate.replace("T", " ").split(".")[0]
+                    endDate = (endDate == null || undefined) ? "": endDate.replace("T", " ").split(".")[0];
+                    advList[i].startDate = startDate;
+                    advList[i].endDate = endDate;
+                }
             }
         }
     })

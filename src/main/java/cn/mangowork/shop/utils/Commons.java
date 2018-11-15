@@ -162,36 +162,7 @@ public class Commons {
         return "";
     }
 
-    /**
-     * 英文格式的日期
-     * @param unixTime
-     * @return
-     */
-    public static String fmtdate_en(Integer unixTime){
-        String fmtdate = fmtdate(unixTime, "d,MMM,yyyy");
-        String[] dateArr = fmtdate.split(",");
-        String rs = "<span>" + dateArr[0] + "</span> " + dateArr[1] + "  " + dateArr[2];
-        return rs;
-    }
 
-
-    /**
-     * 英文格式的日期-月，日
-     * @param unixTime
-     * @return
-     */
-    public static String fmtdate_en_m(Integer unixTime){
-        return fmtdate(unixTime,"MMM d");
-    }
-
-    /**
-     * 日期-年
-     * @param unixTime
-     * @return
-     */
-    public static String fmtdate_en_y(Integer unixTime){
-        return fmtdate(unixTime,"yyyy");
-    }
 
     /**
      * 将中文的yyyy年MM月 - > yyyy

@@ -1,5 +1,6 @@
 package cn.mangowork.shop.dao;
 
+import cn.mangowork.shop.model.AdvDomain;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public interface BaseDao<T> {
 
     /**
      * 通过id删除数据
-     * @param id
+     * @param advDomain
      */
-    void deleteById(int id);
+    void deleteById(AdvDomain advDomain);
 }

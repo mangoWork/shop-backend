@@ -15,6 +15,7 @@ import cn.mangowork.shop.utils.ImgUtils;
 import cn.mangowork.shop.utils.TaleUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,8 +93,8 @@ public class AdvController extends BaseController{
      */
     @RequestMapping("adv/delete")
     @ResponseBody
-    public ApiResponse getAdvs(int id){
-        advService.deleteById(id);
+    public ApiResponse deleteAdv(@RequestBody AdvDomain advDomain){
+        advService.deleteById(advDomain);
         return ApiResponse.success();
     }
 

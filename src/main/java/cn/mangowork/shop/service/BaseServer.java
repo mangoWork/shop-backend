@@ -1,6 +1,8 @@
 package cn.mangowork.shop.service;
 
 
+import cn.mangowork.shop.model.AdvDomain;
+
 /**
  * 基本的服务
  */
@@ -10,8 +12,8 @@ public interface BaseServer {
 
     /**
      * 通过id删除
-     * @param id
+     * @param advDomain
      */
-    void deleteById(int id);
+    void deleteById(AdvDomain advDomain);
 
 }

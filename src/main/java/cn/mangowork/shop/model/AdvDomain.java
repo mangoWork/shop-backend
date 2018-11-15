@@ -1,9 +1,5 @@
 package cn.mangowork.shop.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.sql.Timestamp;
 import java.util.Date;
 
 /**

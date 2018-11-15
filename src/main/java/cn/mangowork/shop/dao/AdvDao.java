@@ -22,4 +22,5 @@ public interface AdvDao extends BaseDao<AdvDomain>{
      * @param advDomain
      */
     void updateAdv(AdvDomain advDomain);
+
 }

@@ -23,4 +23,5 @@ public interface AdvServer extends BaseServer{
     boolean saveAdv(String path, AdvDomain advDomain);
 
     List<AdvDomain> queryAdvs();
+
 }

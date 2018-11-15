@@ -1,10 +1,10 @@
 package cn.mangowork.shop.service.adv.impl;
 
+import cn.mangowork.shop.constant.enums.AdapterEnum;
+import cn.mangowork.shop.constant.enums.StatusEnum;
 import cn.mangowork.shop.dao.AdvDao;
 import cn.mangowork.shop.model.AdvDomain;
 import cn.mangowork.shop.service.adv.AdvServer;
-import org.apache.ibatis.type.JdbcType;
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,11 +41,17 @@ public class AdvServerImpl implements AdvServer {
 
     @Override
     public List<AdvDomain> queryAdvs() {
-        return advDao.query();
+        List<AdvDomain> query = advDao.query();
+        for (AdvDomain advDomain: query){
+            advDomain.setAdapter(AdapterEnum.getDesc(advDomain.getAdapter()));
+        }
+        return  query;
     }
 
     @Override
-    public void deleteById(int id) {
-        advDao.deleteById(id);
+    public void deleteById(AdvDomain advDomain) {
+        advDomain.setStatus(StatusEnum.getStatu(StatusEnum.DELETE));
+        advDao.deleteById(advDomain);
     }
+
 }

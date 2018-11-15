@@ -11,18 +11,23 @@ package cn.mangowork.shop.constant.enums;
 public enum  HttpStatus {
 
     SUCCESS,
-    SUCCESS_DESC(1,  "成功", SUCCESS),
+    SUCCESS_DESC(200,  "成功", SUCCESS, "success"),
 
     FAIL,
-    FAIL_DESC(1,  "失败", FAIL);
+    FAIL_DESC(500,  "失败", FAIL, "fail"),
 
-
+    NOT_FOUND,
+    NOT_FOUND_DESC(404,  "未找到", FAIL, "notFound");
 
     private Integer status;
 
     private String desc = "";
 
     private HttpStatus statusEnum;
+
+    private String code;
+
+
 
     HttpStatus(){
     }
@@ -31,10 +36,11 @@ public enum  HttpStatus {
         this.status = status;
     }
 
-    HttpStatus(final Integer status,final String desc, final HttpStatus statusEnum){
+    HttpStatus(final Integer status,final String desc, final HttpStatus statusEnum, String code){
         this.status = status;
         this.desc = desc;
         this.statusEnum = statusEnum;
+        this.code = code;
     }
 
 
@@ -78,6 +84,21 @@ public enum  HttpStatus {
         for (HttpStatus statusEnum : statusEnums) {
             if (statusEnum.status == value) {
                 return statusEnum.status;
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * 根据状态获取描述
+     * @return
+     */
+    public static String getCode(HttpStatus status) {
+        HttpStatus[] statusEnums = HttpStatus.values();
+        for (HttpStatus statusEnum : statusEnums) {
+            if (statusEnum.statusEnum == status) {
+                return statusEnum.code;
             }
         }
         return null;

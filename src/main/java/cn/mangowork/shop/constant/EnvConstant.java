@@ -16,6 +16,6 @@ public class EnvConstant {
     public static final String DATE_FORMAT = "yyyy-mm-dd";
 
     /**datetime日期格式*/
-    public static final String DATETIME_FORMAT = "yyyy-mm-dd hh:mm:ss";
+    public static final String DATETIME_FORMAT = "yyyy-mm-dd HH:mm:ss";
 
 }

@@ -63,7 +63,7 @@ pagehelper:
 
 logging:
   level:
-    cn.luischen.dao : DEBUG
+    cn.mangowork.shop.dao : DEBUG
 
 swagger:
   show: true

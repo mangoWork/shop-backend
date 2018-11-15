@@ -1,7 +1,5 @@
 package cn.mangowork.shop.model;
 
-import cn.mangowork.shop.constant.StatusEnum;
-
 import java.util.Date;
 
 /**
@@ -17,29 +15,34 @@ public class BaseDomain {
     /**
      * 创建id
      */
-    private int id;
+    protected int id;
 
 
     /**
      * 创建时间
      */
-    private Date created;
+    protected Date created;
 
     /**
      * 更新时间
      */
-    private Date update;
+    protected Date update;
 
     /**
      * 创建用户
      */
-    private int userId;
+    protected int userId;
 
     /**
      * 状态
      * -1 删除
      */
-    private int status;
+    protected int status;
+
+    /**
+     * 乐观锁
+     */
+    protected int version;
 
     public int getId() {
         return id;
@@ -79,5 +82,13 @@ public class BaseDomain {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

@@ -1,4 +1,4 @@
-package cn.mangowork.shop.constant;
+package cn.mangowork.shop.constant.enums;
 
 /**
  * 基本状态枚举类型

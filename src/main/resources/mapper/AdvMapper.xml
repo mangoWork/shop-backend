@@ -62,8 +62,8 @@
     </update>
 
     <!--删除数据，不做物理删除-->
-    <update id="delete" parameterType="cn.mangowork.shop.model.AdvDomain" >
-        update adv set  staus=#{status,jdbcType=INTEGER}  where  id=#{id,jdbcType=INTEGER} and version=#{version,jdbcType=INTEGER}
+    <update id="deleteById" parameterType="cn.mangowork.shop.model.AdvDomain" >
+        update adv set  status=#{status,jdbcType=INTEGER}, version=version +1   where  id=#{id,jdbcType=INTEGER} and version=#{version,jdbcType=INTEGER}
     </update>
 
 </mapper>
